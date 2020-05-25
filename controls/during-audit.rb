@@ -7,10 +7,10 @@ control "json-stack" do
   end
 end
 
-# require "inspec/utils/telemetry/run_context"
+require "inspec/utils/telemetry/run_context"
 
-# control "run-context" do
-#   describe Inspec::Telemetry::RunContextProbe.guess_run_context do
-#     it { should cmp "audit-cookbook" }
-#   end
-# end
+control "run-context" do
+  describe Inspec::Telemetry::RunContextProbe.guess_run_context do
+    it { should cmp "audit-cookbook" }
+  end
+end
