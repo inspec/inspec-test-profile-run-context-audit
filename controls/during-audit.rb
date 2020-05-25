@@ -7,7 +7,7 @@ control "json-stack" do
   end
 end
 
-require "inspec/utils/telemetry/run_context"
+require "inspec/utils/telemetry/run_context_probe"
 
 control "run-context" do
   describe Inspec::Telemetry::RunContextProbe.guess_run_context do
