@@ -21,8 +21,6 @@ end
 
 # So instead, capture the stack to a file, and let the verify-stage
 # "after-audit" profile handle checking the stack.
-# Unfortunately, the JSON dump is lossy, and there is no direct Marshal implementation.
-# So we have to make one.
-Frame = Struct.new(:absolute_path, :label)
-marshallable_stack = stack.map { |f| Frame.new(f.absolute_path, f.label) }
-File.write("/tmp/audit_stack.dat", Marshal.dump(marshallable_stack))
+# Unfortunately, the JSON dump is lossy, so we need to do this a bit manually.
+marshallable_stack = stack.map { |f| { absolute_path: absolute_path, label: label } }
+File.write("/tmp/audit_stack.json", JSON.dump(marshallable_stack))
