@@ -22,5 +22,5 @@ end
 # So instead, capture the stack to a file, and let the verify-stage
 # "after-audit" profile handle checking the stack.
 # Unfortunately, the JSON dump is lossy, so we need to do this a bit manually.
-marshallable_stack = stack.map { |f| { absolute_path: absolute_path, label: label } }
+marshallable_stack = stack.map { |f| { absolute_path: f.absolute_path, label: f.label } }
 File.write("/tmp/audit_stack.json", JSON.dump(marshallable_stack))
